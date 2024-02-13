@@ -1,0 +1,17 @@
+teleport:
+  nodename: teleport-server
+  data_dir: /var/lib/teleport
+  auth_service:
+    enabled: true
+    public_addr: your_domain_or_server_ip:3025
+    listen_addr: 0.0.0.0:3025
+    tokens:
+      - roles:
+          - admin
+          - node
+    oidc_connectors:
+      - id: your_oidc_connector_id
+        issuer_url: https://your-oidc-provider.com
+        client_id: your_client_id
+        client_secret: your_client_secret
+        display: "Your OIDC Connector"

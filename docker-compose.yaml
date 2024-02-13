@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  teleport:
+    image: teleport/teleport:latest
+    container_name: teleport_server
+    hostname: teleport-server
+    ports:
+      - "3022:3022" # SSH port
+      - "3023:3023" # Web UI port
+    volumes:
+      - ./teleport.yaml:/etc/teleport.yaml # Mount Teleport configuration file
+      - teleport:/var/lib/teleport
+    environment:
+      - TELEPORT_LOG=DEBUG # Set Teleport log level (DEBUG, INFO, WARNING, ERROR)
+    command: ["teleport", "start", "--config", "/etc/teleport.yaml"]
+
+volumes:
+  teleport:
