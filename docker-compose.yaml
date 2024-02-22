@@ -2,7 +2,7 @@ version: "3"
 
 services:
   teleport:
-    image: teleport/teleport:latest
+    image: skyscrapers/teleport:latest
     container_name: teleport_server
     hostname: teleport-server
     ports:
